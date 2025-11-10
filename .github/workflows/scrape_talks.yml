@@ -1,37 +1,62 @@
-name: Scrape Talk Locations
+name: Update site and talks
 
 on:
   push:
+    branches:
+      - master
     paths:
-      - 'talks/**'
-      - '_talks/**'
-      - 'talkmap.ipynb'
+      - "talks/**"
+      - "_talks/**"
+      - "talkmap.ipynb"
+      - "**.md"
+      - "_config.yml"
+      - "_layouts/**"
+      - "_includes/**"
+      - "_pages/**"
+      - "assets/**"
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+      # 1. Checkout the repository
+      - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'  # Specify the Python version you need
+      # 2. Set up Python for the notebook
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
 
-    - name: Install dependencies
-      run: |
-        pip install jupyter pandas requests beautifulsoup4 geopy  # Add other dependencies as needed
-        pip install getorg --upgrade
+      # 3. Install Python dependencies
+      - name: Install Python dependencies
+        run: |
+          pip install jupyter pandas requests beautifulsoup4 geopy getorg --upgrade
 
-    - name: Run Jupyter Notebook
-      run: |
-        jupyter nbconvert --to notebook --execute talkmap.ipynb --output talkmap_out.ipynb
+      # 4. Run the Jupyter notebook
+      - name: Execute notebook
+        run: |
+          jupyter nbconvert --to notebook --execute talkmap.ipynb --output talkmap_out.ipynb
 
-    - name: Commit changes
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "Automated update of talk locations" || echo "No changes to commit"
-        git push
+      # 5. Commit notebook changes if any
+      - name: Commit notebook updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add talkmap_out.ipynb
+          git commit -m "Automated update of talkmap" || echo "No changes to commit"
+          git push
+
+      # 6. Set up Ruby for Jekyll
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      # 7. Install Jekyll dependencies
+      - name: Install Jekyll dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      #
