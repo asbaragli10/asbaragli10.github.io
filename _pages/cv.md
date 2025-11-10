@@ -31,7 +31,7 @@ redirect_from:
 
 # Work experience
 
-- 2025–present: Digital Transformation Lead, Merit, Newcastle Upon Tyne  
+- **2025–present: Digital Transformation Lead, Merit, Newcastle Upon Tyne**  
   Position funded by Innovate UK as a Knowledge Transfer Partnership associate with Newcastle University and Merit.
 
   - **Process optimization:** Translating manufacturing operational needs into digital transformation requirements.
@@ -41,8 +41,7 @@ redirect_from:
   - **Experimental campaign:** Coordination of large teams and 30+ stakeholders ranging from C-level executives to shop floor workers to deploy digital transformation manufacturing architectures.
   - **Dashboard:** Design and development of data analytics platforms to turn manufacturing data into actionable KPIs and improve manufacturing monitoring and planning.
 
-- 2021-2025: PhD Candidate, University of Trento
-  Chair: Manufacturing Systems
+- **2021-2025: PhD Candidate, University of Trento, Chair: Manufacturing Systems**
 
   - **Thesis**: Cyber-physical systems to monitor the efficiency and sustainability of human-centric manufacturing systems.
   - **IoT sensor**: Deployment of human-centric digital technologies to monitor manual task executions and safety of workers in industrial scenarios. Hands-on with many sensors such as RTLS (UWB), Inertial Measuring Units, Azure Kinect, RFID readers, and Electromyography. Responsible for designing the desired data flow and storage based on business requirements.
@@ -52,8 +51,7 @@ redirect_from:
   - **Supervision**: Technical support and mentoring of students for Master's, Bachelor thesis, and freshman Ph.D. students.
   - **Dissemination**: Deliver engaging presentations to both technical and non-technical audiences at major conferences, enhancing the team's visibility and attracting potential new collaborations.
 
-- 2023: Visiting PhD Candidate, University of Twente
-  Chair: Manufacturing Systems
+- **2023: Visiting PhD Candidate, University of Twente, Chair: Manufacturing Systems**
 
   - **Project**: Development of a cyber-physical architecture to monitor human-centric reconfigurable manufacturing systems (RMS)
   - **IoT sensor**: Design, installation, and test of an UWB-based RTLS to monitor industrial entities and the workforce in a RMS set-up
@@ -62,8 +60,7 @@ redirect_from:
   - **Dashboards**: Delivering actionable KPIs to monitor the efficiency and social sustainability of RMS environments.
   - **Supervision**: Technical support and mentoring of Learning Factory students.
 
-- 2020-2021: Research Assistant, University of Göttingen
-  Chair: Production and Logistics
+- **2020-2021: Research Assistant, University of Göttingen, Chair: Production and Logistics**
   - **Support**: Lecture preparation and student mentoring and support throughout the course
   - **Laboratory**: Delivered 8 hours of lectures utilizing simulation tools to address real-world case applications
   - **Research Project**: Literature review on the usage of indoor positioning systems in manufacturing and logistics environments
