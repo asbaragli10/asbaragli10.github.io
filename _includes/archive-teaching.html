@@ -1,0 +1,44 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="{{ include.type | default: "list" }}__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <!-- Teaching title -->
+    <h2 class="archive__item-title" itemprop="headline">
+      {{ title }}
+    </h2>
+
+    <!-- Structured information -->
+    <p><strong>Cohort:</strong> {{ post.type }}</p>
+    <p><strong>University:</strong> {{ post.venue }}</p>
+    {% if post.location %}
+      <p><strong>Location:</strong> {{ post.location }}</p>
+    {% endif %}
+    {% if post.date_interval %}
+      <p><strong>Period:</strong> {{ post.date_interval }}</p>
+    {% elsif post.date %}
+      <p><strong>Year:</strong> {{ post.date | date: "%Y" }}</p>
+    {% endif %}
+
+    <!-- Details list -->
+    {% if post.details %}
+      <ul>
+        {% for item in post.details %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <!-- Optional content -->
+    {% if post.content %}
+      <div>{{ post.content }}</div>
+    {% endif %}
+
+  </article>
+</div>

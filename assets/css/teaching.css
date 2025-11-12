@@ -1,0 +1,54 @@
+/* ===========================================
+   Teaching section styling
+   =========================================== */
+
+/* Container and general text */
+.archive__item {
+    text-align: justify;       /* Justify all text */
+    margin-bottom: 2rem;       /* Space between teaching items */
+    line-height: 1.6;          /* Improve readability */
+}
+
+/* Teaching title styling */
+.archive__item-title {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-decoration: none !important;  /* Remove any underline */
+    color: inherit;                     /* Keep default text color */
+    position: relative;                 /* Needed for ::after */
+    cursor: default;                    /* No pointer cursor */
+}
+
+/* Remove underline on hover explicitly */
+.archive__item-title:hover {
+    text-decoration: none !important;
+}
+
+/* Decorative line under the title */
+.archive__item-title::after {
+    content: "";
+    display: block;
+    width: 60px;               /* Length of the line */
+    height: 3px;               /* Thickness */
+    background-color: #52adc8; /* Accent color */
+    margin-top: 4px;
+    border-radius: 2px;
+}
+
+/* Paragraphs and lists */
+.archive__item p, 
+.archive__item ul, 
+.archive__item li {
+    text-align: justify;
+    margin-bottom: 0.5rem;
+}
+
+/* List styling */
+.archive__item ul {
+    padding-left: 1.2rem;      /* Indent bullets */
+}
+
+.archive__item li {
+    margin-bottom: 0.5rem;
+}

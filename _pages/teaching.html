@@ -5,8 +5,9 @@ permalink: /teaching/
 author_profile: true
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/teaching.css' | relative_url }}">
 {% include base_path %}
 
 {% for post in site.teaching reversed %}
-  {% include archive-single.html %}
+  {% include archive-teaching.html %}
 {% endfor %}
