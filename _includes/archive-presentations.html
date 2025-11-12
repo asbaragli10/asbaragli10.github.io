@@ -1,0 +1,46 @@
+{% include base_path %}
+
+<div class="presentation__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <div class="presentation__container">
+
+    {% if include.post.header.teaser %}
+      <div class="presentation__teaser">
+        <img 
+          src="{{ '/images/' | append: include.post.header.teaser | relative_url }}" 
+          alt="{{ include.post.title }}"
+        >
+      </div>
+    {% endif %}
+
+    <div class="presentation__content">
+      <h2 class="presentation__title" itemprop="headline">{{ include.post.title }}</h2>
+
+      {% if include.post.date %}
+        <p class="presentation__date">{{ include.post.date | date: "%B %Y" }}</p>
+      {% endif %}
+
+      {% if include.post.type or include.post.venue %}
+        <p class="presentation__venue">
+          {% if include.post.type %}{{ include.post.type }}{% endif %}
+          {% if include.post.type and include.post.venue %} at {% endif %}
+          {% if include.post.venue %}{{ include.post.venue }}{% endif %}
+        </p>
+      {% endif %}
+
+      <div class="presentation__badges">
+        {% if include.post.paperurl %}
+          <a href="{{ include.post.paperurl }}" target="_blank">
+            <img alt="PDF" src="https://img.shields.io/badge/PDF-EC1C24?logo=adobeacrobatreader&logoColor=white" style="height: 24px;">
+          </a>
+        {% endif %}
+
+        {% if include.post.externallink %}
+          <a href="{{ include.post.externallink }}" target="_blank">
+            <img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white" style="height: 24px;">
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>

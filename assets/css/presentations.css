@@ -1,0 +1,208 @@
+.presentations-archive {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1em 0;
+}
+
+.presentation__item {
+  transition: transform 0.2s ease;
+}
+
+.presentation__container {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1.2em;
+  align-items: start;
+  padding: 1.2em;
+  background: #eeeeee; /* Light theme box background */
+  border-radius: 8px;
+  border: 1px solid #52adc8; /* Fine border for both light & dark */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.presentation__container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #52adc8;
+  transform: translateY(-2px);
+}
+
+.presentation__teaser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  padding: 0.5em;
+  background: #f9f9f9;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.presentation__teaser img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.presentation__content {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.presentation__title {
+  font-size: 1.1em;
+  color: #006c80;
+  margin: 0 0 0.4em 0;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.presentation__title:hover {
+  color: #004d5a;
+}
+
+.presentation__date {
+  color: #666;
+  font-size: 0.9em;
+  margin: 0 0 0.3em 0;
+  font-weight: 500;
+}
+
+.presentation__venue {
+  color: #777;
+  font-size: 0.9em;
+  margin: 0 0 0.6em 0;
+  line-height: 1.5;
+}
+
+/* Badge container for better alignment */
+.presentation__badges {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35em 0.7em;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  border: none;
+  color: white;
+}
+
+.badge--pdf {
+  background-color: #DC143C;
+}
+
+.badge--pdf:hover {
+  background-color: #B21032;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(220, 20, 60, 0.4);
+}
+
+.badge--html {
+  background-color: #E34F26;
+}
+
+.badge--html:hover {
+  background-color: #C73F1A;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(227, 79, 38, 0.4);
+}
+
+.badge svg {
+  flex-shrink: 0;
+}
+
+/* For shields.io badges */
+.presentation__badges img {
+  height: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 3px;
+  display: block;
+}
+
+.presentation__badges a:hover img {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .presentation__container {
+    grid-template-columns: 70px 1fr;
+    gap: 1em;
+    padding: 1em;
+  }
+  
+  .presentation__teaser {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .presentation__title {
+    font-size: 1em;
+  }
+  
+  .presentation__date,
+  .presentation__venue {
+    font-size: 0.85em;
+  }
+}
+
+/* =========================
+   Dark / Nocturnal theme
+   ========================= */
+html[data-theme="dark"] .presentation__container {
+  background: var(--global-bg-color); /* Dark background */
+  color: var(--global-text-color);
+  border-color: #52adc8; /* Keep border same in dark mode */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .presentation__container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: #52adc8;
+}
+
+html[data-theme="dark"] .presentation__teaser {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="dark"] .presentation__title {
+  color: var(--global-link-color);
+}
+
+html[data-theme="dark"] .presentation__title:hover {
+  color: var(--global-hover-color, var(--global-link-color));
+  filter: brightness(1.2);
+}
+
+html[data-theme="dark"] .presentation__date {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme="dark"] .presentation__venue {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Dark theme badge adjustments */
+html[data-theme="dark"] .presentation__badges a:hover img {
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
+}

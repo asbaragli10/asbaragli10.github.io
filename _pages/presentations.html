@@ -1,0 +1,20 @@
+---
+layout: archive
+title: "Presentations"
+permalink: /presentations/
+author_profile: true
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/presentations.css' | relative_url }}">
+
+{% include base_path %}
+
+{% if site.talkmap_link == true %}
+  <p style="text-decoration:underline;">
+    <a href="/talkmap.html">See a map of all the places I've given a presentation!</a>
+  </p>
+{% endif %}
+
+{% for post in site.presentations reversed %}
+  {% include archive-presentations.html post=post %}
+{% endfor %}
