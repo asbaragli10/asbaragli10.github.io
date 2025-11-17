@@ -5,10 +5,13 @@ permalink: /projects/
 author_profile: true
 ---
 
+
+<link rel="stylesheet" href="{{ '/assets/css/projects.css' | relative_url }}">
+
 {% include base_path %}
 
+{% assign sorted_projects = site.projects | sort: "year" | reverse %}
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
+{% for project in sorted_projects %}
+  {% include archive-projects.html project=project %}
 {% endfor %}
-

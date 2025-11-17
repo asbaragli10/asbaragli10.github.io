@@ -11,7 +11,7 @@ locale: "en-US"
 site_theme: "air" # Currently available options are "default", "air"
 title: "Andrea Sbaragli"
 title_separator: "-"
-name: &name "Your Name"
+name: &name "Andrea Sbaragli"
 description: &description "Andrea Sbaragli website" # Update this with a general description of your site, this is the default if not overridden by a page
 url:
   "https://asbaragli10.github.io" # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",

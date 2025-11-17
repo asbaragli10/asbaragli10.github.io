@@ -1,0 +1,165 @@
+<div class="project-item card shadow p-6 mb-8 rounded-xl">
+
+  <!-- Title -->
+  <h2 class="text-2xl font-semibold mb-3">
+    {{ include.project.title }}
+  </h2>
+
+  <!-- Tech Stack -->
+  {% if include.project.tech_stack %}
+    <div class="tech-stack mb-4">
+      <h3 class="font-semibold mb-2">Tech Stack</h3>
+
+      <ul style="margin:0; padding-left:1rem;">
+        {% for item in include.project.tech_stack %}
+          <li style="margin-bottom:6px;">
+            {{ item }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <!-- Description -->
+  {% if include.project.description %}
+    <div class="project-description mb-4"
+         data-full-text="{{ include.project.description | escape }}">
+
+      <p class="desc-short"></p>
+
+      <p class="desc-full" style="display:none;">
+        {{ include.project.description }}
+      </p>
+
+      <button class="read-more-btn" onclick="toggleDescription(this)">
+        Read more
+      </button>
+    </div>
+  {% endif %}
+
+  <!-- Image Carousel -->
+  {% if include.project.figures %}
+    <div class="project-carousel mt-4">
+      <div class="carousel-container">
+        {% for figure in include.project.figures %}
+          <div class="carousel-slide {% if forloop.first %}active{% endif %}" 
+               data-slide="{{ forloop.index0 }}">
+            <img
+              src="{{ figure | relative_url }}"
+              alt="{{ include.project.title }} - Image {{ forloop.index }}"
+            >
+          </div>
+        {% endfor %}
+
+        <button class="carousel-nav prev" onclick="changeSlide(this, -1)">‹</button>
+        <button class="carousel-nav next" onclick="changeSlide(this, 1)">›</button>
+      </div>
+
+      <div class="carousel-indicators">
+        {% for figure in include.project.figures %}
+          <span class="carousel-indicator {% if forloop.first %}active{% endif %}" 
+                data-index="{{ forloop.index0 }}"
+                onclick="goToSlide(this)">
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+
+  {% elsif include.project.figure %}
+    <div class="project-figure mt-4">
+      <img
+        src="{{ include.project.figure | relative_url }}"
+        alt="{{ include.project.title }}"
+        style="width:100%; border-radius:12px;"
+      >
+    </div>
+  {% endif %}
+
+</div>
+
+<script>
+/* ----- Second sentence + Read more logic ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  const descriptions = document.querySelectorAll(".project-description");
+
+  descriptions.forEach(desc => {
+    const fullText = desc.getAttribute("data-full-text");
+
+    // Find the first and second periods
+    const firstDot = fullText.indexOf(".");
+    let secondDot = -1;
+
+    if (firstDot !== -1) {
+      secondDot = fullText.indexOf(".", firstDot + 1);
+    }
+
+    let shortText = fullText;
+
+    // If second dot exists → cut there
+    if (secondDot !== -1) {
+      shortText = fullText.substring(0, secondDot + 1);
+    }
+
+    // Otherwise fallback to first period
+    else if (firstDot !== -1) {
+      shortText = fullText.substring(0, firstDot + 1);
+    }
+
+    desc.querySelector(".desc-short").textContent = shortText;
+  });
+});
+
+function toggleDescription(button) {
+  const container = button.closest(".project-description");
+  const shortText = container.querySelector(".desc-short");
+  const fullText = container.querySelector(".desc-full");
+
+  const hidden = fullText.style.display === "none";
+
+  if (hidden) {
+    fullText.style.display = "block";
+    shortText.style.display = "none";
+    button.textContent = "Read less";
+  } else {
+    fullText.style.display = "none";
+    shortText.style.display = "inline";
+    button.textContent = "Read more";
+  }
+}
+
+/* ----- Carousel logic ----- */
+function changeSlide(button, direction) {
+  const carousel = button.closest('.project-carousel');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const indicators = carousel.querySelectorAll('.carousel-indicator');
+
+  let currentIndex = 0;
+  slides.forEach((slide, i) => {
+    if (slide.classList.contains('active')) currentIndex = i;
+  });
+
+  let newIndex = currentIndex + direction;
+  if (newIndex < 0) newIndex = slides.length - 1;
+  if (newIndex >= slides.length) newIndex = 0;
+
+  slides[currentIndex].classList.remove('active');
+  slides[newIndex].classList.add('active');
+
+  indicators[currentIndex].classList.remove('active');
+  indicators[newIndex].classList.add('active');
+}
+
+function goToSlide(indicator) {
+  const index = parseInt(indicator.getAttribute('data-index'));
+  const carousel = indicator.closest('.project-carousel');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const indicators = carousel.querySelectorAll('.carousel-indicator');
+
+  slides.forEach(s => s.classList.remove('active'));
+  indicators.forEach(i => i.classList.remove('active'));
+
+  slides[index].classList.add('active');
+  indicators[index].classList.add('active');
+}
+</script>
+
