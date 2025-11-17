@@ -22,8 +22,7 @@
 
   <!-- Description -->
   {% if include.project.description %}
-    <div class="project-description mb-4"
-         data-full-text="{{ include.project.description | escape }}">
+    <div class="project-description mb-4">
 
       <p class="desc-short"></p>
 
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const descriptions = document.querySelectorAll(".project-description");
 
   descriptions.forEach(desc => {
-    const fullText = desc.getAttribute("data-full-text");
+    const fullText = desc.querySelector(".desc-full").textContent;
 
     // Find the first and second periods
     const firstDot = fullText.indexOf(".");
@@ -99,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (secondDot !== -1) {
       shortText = fullText.substring(0, secondDot + 1);
     }
-
     // Otherwise fallback to first period
     else if (firstDot !== -1) {
       shortText = fullText.substring(0, firstDot + 1);
@@ -162,4 +160,3 @@ function goToSlide(indicator) {
   indicators[index].classList.add('active');
 }
 </script>
-
