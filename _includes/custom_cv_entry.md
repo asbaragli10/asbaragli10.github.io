@@ -21,7 +21,11 @@
 
 ## Work experience
 
-- **2025–present: Digital Transformation Lead, Merit, Newcastle Upon Tyne**  
+
+- **2026-present: Postdoctoral Research Fellow, Brighton University, Brighton**  
+
+
+- **2025–2026: Digital Transformation Lead, Newcastle University, Newcastle Upon Tyne**  
   Position funded by Innovate UK as a Knowledge Transfer Partnership associate with Newcastle University and Merit.
 
   - **Process optimization:** Translating manufacturing operational needs into digital transformation requirements.
