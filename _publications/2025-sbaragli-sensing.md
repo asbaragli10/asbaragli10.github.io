@@ -6,11 +6,11 @@ venue: "IEEE Access"
 volume: 13
 number: 19
 pages: "207475--207487"
-date: 2024-01-01
+date: 2025-12-08
 authors:
   - A. Sbaragli
   - M. Nardello
-doi: ""
+doi: "10.1109/ACCESS.2025.3641299"
 links:
   - name: HTML
     url: https://ieeexplore.ieee.org/abstract/document/11283043
